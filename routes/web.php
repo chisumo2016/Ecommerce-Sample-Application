@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('shop.index');
-});
+Route::resource('/', 'ProductController');
+Route::get('/cart/{id}', 'ProductController@AddCart')->name('Product.addToCart');
 
 Auth::routes();
 
