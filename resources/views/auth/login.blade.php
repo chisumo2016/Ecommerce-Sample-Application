@@ -65,6 +65,7 @@
                             </div>
                         </div>
                     </form>
+                    <p>Don't have an account ? <a href=" {{ __('Login') }}">Sign up </a></p>
                 </div>
             </div>
         </div>
