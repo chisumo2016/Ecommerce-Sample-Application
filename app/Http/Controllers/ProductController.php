@@ -104,6 +104,37 @@ class ProductController extends Controller
 
     }
 
+    public  function  getReduceByOne($id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart =  new Cart($oldCart);
+        $cart->reduceByOne($id);
+        if (count($cart->items) > 0){
+            Session::put('cart', $cart);
+        }else{
+            Session::forget('cart');
+        }
+
+        //Session::put('cart', $cart);
+
+        return redirect()->route('product.shoppingCart');
+
+    }
+
+    public  function  getRemoveItem($id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart =  new Cart($oldCart);
+        $cart->removeItem($id);
+       if (count($cart->items) > 0){
+           Session::put('cart', $cart);
+       }else{
+           Session::forget('cart');
+       }
+        //Session::put('cart', $cart);
+        return redirect()->route('product.shoppingCart');
+    }
+
     public  function  ShopCart()
     {
         if (!Session::has('cart')){
@@ -167,4 +198,6 @@ class ProductController extends Controller
             return redirect()->route('product.index')->with('success','Successfully Purchased Products');
 
     }
+
+
 }
