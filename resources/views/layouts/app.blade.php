@@ -36,7 +36,7 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous">
 </script>
-@yield('script')
-    @include('partials.footer')
+@yield('scripts')
+ @include('partials.footer')
 </body>
 </html>
