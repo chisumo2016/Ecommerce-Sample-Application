@@ -103,26 +103,27 @@ class ProductController extends Controller
     {
         if (!Session::has('cart')){
             return view('shop.shoppingCart');
-//            return view('shop.shoppingCart',['products' => null]);
+            //return view('shop.shoppingCart',['products' => null]);
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         return view('shop.shoppingCart',
             [
-                'products' => $cart->items,
+                'products'   => $cart->items,
                 'totalPrice' => $cart->totalPrice,
-
             ]);
-
-
-
-
     }
 
-
-
-
-
+    public  function   checkout()
+    {
+        if (!Session::has('cart')){
+            return view('shop.shoppingCart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $total = $cart->totalPrice;
+        return view('shop.checkout',['total' => $total]);
+    }
 
 
 }

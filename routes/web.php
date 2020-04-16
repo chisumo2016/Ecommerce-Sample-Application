@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/product', 'ProductController');
 Route::get('/cart/{id}', 'ProductController@AddCart')->name('Product.addToCart');
-Route::get('/cart/', 'ProductController@ShopCart')->name('product.shoppingCart');
+Route::get('/cart', 'ProductController@ShopCart')->name('product.shoppingCart');
+Route::get('/checkout', 'ProductController@checkout')->name('checkout');
+Route::post('/checkout', 'ProductController@postCheckout')->name('checkout');
 
 Auth::routes();
 
